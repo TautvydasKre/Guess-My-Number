@@ -4,6 +4,7 @@ const doc = document;
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
+let highscore = 0;
 
 doc.querySelector('.check').addEventListener('click', function () {
   const guess = Number(doc.querySelector('.guess').value);
@@ -21,21 +22,16 @@ doc.querySelector('.check').addEventListener('click', function () {
 
     doc.querySelector('.number').style.width = '30rem';
 
-    // When guess is to high
-  } else if (guess > secretNumber) {
-    if (score > 1) {
-      doc.querySelector('.message').textContent = '📈Too high! ';
-      score--;
-      doc.querySelector('.score').textContent = score;
-    } else {
-      doc.querySelector('.message').textContent = '💥You lost the game!';
-      doc.querySelector('.score').textContent = 0;
+    if (score > highscore) {
+      highscore = score;
+      doc.querySelector('.highscore').textContent = highscore;
     }
 
-    // When guess is to low
-  } else if (guess < secretNumber) {
+    // When guess is wrong
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      doc.querySelector('.message').textContent = '📉Too low!';
+      doc.querySelector('.message').textContent =
+        guess > secretNumber ? '📈Too high! ' : '📉Too low!';
       score--;
       doc.querySelector('.score').textContent = score;
     } else {
