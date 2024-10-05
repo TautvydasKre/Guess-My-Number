@@ -40,4 +40,4 @@ To run the game locally:
 
 1. Clone the repository or download the ZIP file:
    ```bash
-   git clone https://github.com/TautvydasKre/guess-my-number.git
+   git clone https://github.com/TautvydasKre/Guess-My-Number.git
